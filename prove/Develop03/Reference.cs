@@ -2,31 +2,43 @@ using System;
 
 public class Reference
 {
-    public string Book { get; private set; }
-    public int Chapter { get; private set; }
-    public int StartVerse { get; private set; }
-    public int EndVerse { get; private set; }
+    private string _book;
+    private int _startVerse;
+    private int? _endVerse;
 
-    public Reference(string book, int chapter, int verse)
-    {   
-        Book = book;
-        Chapter = chapter;
-        StartVerse = verse;
-        EndVerse = verse;
+    public Reference(string book, int startVerse)
+    {
+        _book = book;
+        _startVerse = startVerse;
+        _endVerse = null;
     }
 
-    public Reference(string book, int chapter, int startVerse, int endVerse)
+    public Reference(string book, int startVerse, int endVerse)
     {
-        Book = book;
-        Chapter = chapter;
-        StartVerse = startVerse;
-        EndVerse = endVerse;
+        _book = book;
+        _startVerse = startVerse;
+        _endVerse = endVerse;
+    }
+
+    public Reference(string book, int startVerse, int? endVerse) 
+    {
+        _book = book;
+        _startVerse = startVerse;
+        _endVerse = endVerse;
     }
 
     public override string ToString()
     {
-        return EndVerse > StartVerse
-            ? $"{Book} {Chapter}:{StartVerse}-{EndVerse}"
-            : $"{Book} {Chapter}:{StartVerse}";
+        string reference = $"{_book}:{_startVerse}";
+        if (_endVerse.HasValue)
+        {
+            reference += $"-{_endVerse.Value}";
+        }
+        return reference;
+    }
+
+    public bool IsSingleVerse()
+    {
+        return !_endVerse.HasValue || _startVerse == _endVerse;
     }
 }

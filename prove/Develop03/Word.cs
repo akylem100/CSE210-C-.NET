@@ -2,24 +2,27 @@ using System;
 
 public class Word
 {
-    public string Text { get; private set; }
-    public bool IsHidden { get; private set; }
+    private string _text;
+    private bool _isHidden;
 
     public Word(string text)
     {
-        Text = text;
-        IsHidden = false;
+        _text = text;
+        _isHidden = false;
+    }
+
+    public bool IsHidden
+    {
+        get { return _isHidden; }
     }
 
     public void Hide()
     {
-        IsHidden = true;
+        _isHidden = true;
     }
 
     public override string ToString()
     {
-        return IsHidden
-            ? "_____"
-            : Text;
+        return _isHidden ? "_____" : _text;
     }
 }
