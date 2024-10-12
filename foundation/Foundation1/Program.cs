@@ -5,12 +5,10 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        // Create video objects with random details
         Video video1 = new Video("Learning C# Basics", "John Smith", 35);
         Video video2 = new Video("Advanced C# Programming", "Jane Doe", 55);
         Video video3 = new Video("C# Design Patterns", "Emily Johnson", 25);
 
-        // Create comments for each video
         video1.AddComment(new Comment("Alice", "This tutorial worked great for me, thanks!"));
         video1.AddComment(new Comment("Jay", "Very helpful, I was able to understand C# a lot faster than expected."));
         video1.AddComment(new Comment("Kristy", "I learned a lot. It would have been more difficult trying to grasp C# without this tutorial."));
